@@ -25,7 +25,6 @@ public class TicTacToe {
         Computer ai = new Computer(game.size, 1); //Creating computer object as extension of Game class.
 
         System.out.println("TIC TAC TOE");
-        //updateDisplay(board);
 
         boolean userMove = true;
         boolean cpMove = false;
@@ -53,10 +52,18 @@ public class TicTacToe {
         }
 
         //Game ends win loop breaks
-        if (game.checkGame(game.board) == 1) {
-            System.out.println("Game Over! Player Wins!");
-        } else if (game.checkGame(game.board) == 2) {
-            System.out.println("Game Over! Computer Wins!");
+        switch (game.checkGame(game.board)) {
+            case 1:
+                System.out.println("Game Over! Player Wins!");
+                break;
+            case 2:
+                System.out.println("Game Over! Computer Wins!");
+                break;
+            case 3:
+                System.out.println("No More Moves! Tie!");
+                break;
+            default:
+                break;
         }
 
     }

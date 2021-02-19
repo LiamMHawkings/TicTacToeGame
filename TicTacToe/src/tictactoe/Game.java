@@ -81,9 +81,7 @@ public class Game {
                         return 2;
                     }
                 }
-            }
-            
-            else if (b[i][(b.length - 1) - i] != 0 && b[i][(b.length - 1) - i] == b[i + 1][(b.length - 2) - i]) {
+            } else if (b[i][(b.length - 1) - i] != 0 && b[i][(b.length - 1) - i] == b[i + 1][(b.length - 2) - i]) {
                 if (i == b[0].length - 2) {
                     if (b[0][(b.length - 1)] == 1) {
                         //System.out.println("rD1");
@@ -93,20 +91,26 @@ public class Game {
                         return 2;
                     }
                 }
-            }
-            
-            else {
+            } else {
                 break;
             }
         }
 
-        return 0;
+        for (int i = 0; i < b.length; i++) {
+            for (int j = 0; j < b[0].length; j++) {
+                if (b[i][j] == 0) {
+                    return 0;
+                }
+            }
+        }
+
+        return 3;
+
     }
 
     /**
      * Display method used to print the 2D Array for the game by printing rows
      * of said array using a for loop.
-     *
      * @param b (board)
      */
     public static void updateDisplay(int[][] b) {
