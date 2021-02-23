@@ -20,7 +20,7 @@ public class Computer extends Game {
         this.aiLevel = level;
     }
 
-    public void easyMove(int[][] b) {
+    public void easyMove(String[][] b) {
         boolean moved = false;
 
         int r;
@@ -30,9 +30,10 @@ public class Computer extends Game {
             r = generateNumber(b.length) + 1;
             c = generateNumber(b.length) + 1;
 
-            if (b[r - 1][c - 1] == 0 && b[r - 1][c - 1] != 1) {
-                b[r - 1][c - 1] = 2;
-                updateDisplay(b);
+            //System.out.println("r = " + r + " c = " + c);
+            
+            if (b[r - 1][c - 1].equals("") && !b[r - 1][c - 1].equals("X")) {
+                b[r - 1][c - 1] = "O";
                 moved = true;
             }
         }
@@ -45,15 +46,14 @@ public class Computer extends Game {
      * @param b
      * @return
      */
-    public boolean aiTurn(int[][] b) {
+    public boolean aiTurn(String[][] b) {
         switch (this.aiLevel) {
             case 1:
                 easyMove(b);
                 break;
         }
 
-        return false;
-
+        return true;
     }
 
     /**

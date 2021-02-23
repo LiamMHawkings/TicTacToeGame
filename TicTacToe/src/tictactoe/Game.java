@@ -14,11 +14,16 @@ import java.util.Arrays;
 public class Game {
 
     public int size;
-    public int[][] board;
+    public String[][] board;
 
     public Game(int size) {
         this.size = size;
-        this.board = new int[size][size];
+        this.board = new String[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                this.board[i][j] = "";
+            }
+        }
     }
 
     /**
@@ -30,17 +35,17 @@ public class Game {
      * @param b (board)
      * @return true (to continue game). false (to end game)
      */
-    public int checkGame(int[][] b) {
+    public int checkGame(String[][] b) {
         //Check for 'rows' win condition
         for (int i = 0; i < b.length; i++) {
             for (int j = 0; j < b[0].length - 1; j++) {
-                if (b[i][j] != 0 && b[i][j] == b[i][j + 1]) {
+                if (!b[i][j].equals("") && b[i][j].equals(b[i][j + 1])) {
                     if (j == b[0].length - 2) {
-                        if (b[i][j] == 1) {
-                            //System.out.println("R1");
+                        if (b[i][j].equals("X")) {
+                            System.out.println("R1");
                             return 1;
-                        } else if (b[i][j] == 2) {
-                            //System.out.println("R2");
+                        } else if (b[i][j].equals("O")) {
+                            System.out.println("R2");
                             return 2;
                         }
                     }
@@ -53,13 +58,13 @@ public class Game {
         //Check for 'cols' win condition
         for (int i = 0; i < b.length; i++) {
             for (int j = 0; j < b[0].length - 1; j++) {
-                if (b[j][i] != 0 && b[j][i] == b[j + 1][i]) {
+                if (!b[j][i].equals("") && b[j][i].equals(b[j + 1][i])) {
                     if (j == b[0].length - 2) {
-                        if (b[j][i] == 1) {
-                            //System.out.println("C1");
+                        if (b[j][i].equals("X")) {
+                            System.out.println("C1");
                             return 1;
-                        } else if (b[j][i] == 2) {
-                            //System.out.println("C2");
+                        } else if (b[j][i].equals("O")) {
+                            System.out.println("C2");
                             return 2;
                         }
                     }
@@ -71,23 +76,30 @@ public class Game {
 
         //Check for 'diagonals' win condition
         for (int i = 0; i < b.length - 1; i++) {
-            if (b[i][i] != 0 && b[i][i] == b[i + 1][i + 1]) {
+            if (!b[i][i].equals("") && b[i][i].equals(b[i + 1][i + 1])) {
                 if (i == b[0].length - 2) {
-                    if (b[i][i] == 1) {
-                        //System.out.println("D1");
+                    if (b[i][i].equals("X")) {
+                        System.out.println("D1");
                         return 1;
-                    } else if (b[i][i] == 2) {
-                        //System.out.println("D2");
+                    } else if (b[i][i].equals("O")) {
+                        System.out.println("D2");
                         return 2;
                     }
                 }
-            } else if (b[i][(b.length - 1) - i] != 0 && b[i][(b.length - 1) - i] == b[i + 1][(b.length - 2) - i]) {
+            } else {
+                break;
+            }
+        }
+
+        //Check for 'reversed diagonals' win condition
+        for (int i = 0; i < b.length - 1; i++) {
+            if (!b[i][(b.length - 1) - i].equals("") && b[i][(b.length - 1) - i].equals(b[i + 1][(b.length - 2) - i])) {
                 if (i == b[0].length - 2) {
-                    if (b[0][(b.length - 1)] == 1) {
-                        //System.out.println("rD1");
+                    if (b[0][(b.length - 1)].equals("X")) {
+                        System.out.println("R-D1");
                         return 1;
-                    } else if (b[0][(b.length - 1)] == 2) {
-                        //System.out.println("rD2");
+                    } else if (b[0][(b.length - 1)].equals("O")) {
+                        System.out.println("R-D2");
                         return 2;
                     }
                 }
@@ -98,7 +110,7 @@ public class Game {
 
         for (int i = 0; i < b.length; i++) {
             for (int j = 0; j < b[0].length; j++) {
-                if (b[i][j] == 0) {
+                if (b[i][j].equals("")) {
                     return 0;
                 }
             }
@@ -111,10 +123,11 @@ public class Game {
     /**
      * Display method used to print the 2D Array for the game by printing rows
      * of said array using a for loop.
+     *
      * @param b (board)
      */
-    public static void updateDisplay(int[][] b) {
-        for (int[] row : b) {
+    public void updateDisplay(String[][] b) {
+        for (String[] row : b) {
             System.out.println(Arrays.toString(row));
         }
     }

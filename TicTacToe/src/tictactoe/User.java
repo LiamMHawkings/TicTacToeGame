@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *
+ * USER FUNCTIONALITY NOW CONTAINED INSIDE GUI.java
  * @author Liam
  */
 public class User extends Game {
@@ -25,7 +25,7 @@ public class User extends Game {
      * @param b
      * @return true (to complete turn), false (to retry)
      */
-    public boolean userTurn(int[][] b) {
+    public boolean userTurn(String[][] b) {
         Scanner sc = new Scanner(System.in);
 
         int r, c;
@@ -51,8 +51,8 @@ public class User extends Game {
             return false;
         }
 
-        if (b[r - 1][c - 1] == 0) {
-            b[r - 1][c - 1] = 1;
+        if (b[r - 1][c - 1].equals("")) {
+            b[r - 1][c - 1] = "X";
             updateDisplay(b);
             return true;
         } else {

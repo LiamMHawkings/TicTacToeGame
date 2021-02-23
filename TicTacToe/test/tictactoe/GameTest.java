@@ -44,7 +44,7 @@ public class GameTest {
     @Test
     public void testCheckGame1() {
         System.out.println("checkGame");
-        int[][] b = {{1,0,2},{2,2,0},{1,1,1}};
+        String[][] b = {{"X","","O"},{"O","O",""},{"X","X","X"}};
         
         Game instance = new Game(3);
         instance.board = b;
@@ -61,7 +61,7 @@ public class GameTest {
     @Test
     public void testCheckGame2() {
         System.out.println("checkGame");
-        int[][] b = {{1,1,2,2},{0,0,2,1},{1,2,1,0},{2,1,0,0}};
+        String[][] b = {{"X","X","O","O"},{"","","O","X"},{"X","O","X",""},{"O","X","",""}};
         
         Game instance = new Game(4);
         instance.board = b;
@@ -78,7 +78,7 @@ public class GameTest {
     @Test
     public void testCheckGame3() {
         System.out.println("checkGame");
-        int[][] b = {{2,1,1,2,0},{2,1,0,1,2},{0,1,1,2,0},{0,1,2,2,0},{2,1,2,2,0}};
+        String[][] b = {{"O","X","X","O",""},{"O","X","","X","O"},{"","X","X","O",""},{"","X","O","O",""},{"O","X","O","O",""}};
         
         Game instance = new Game(5);
         instance.board = b;
@@ -95,7 +95,7 @@ public class GameTest {
     @Test
     public void testCheckGame4() {
         System.out.println("checkGame");
-        int[][] b = {{1,2,1,2},{2,2,1,1},{1,2,1,1},{2,1,2,2}};
+        String[][] b = {{"X","O","X","O"},{"O","O","X","X"},{"X","O","X","X"},{"O","X","O","O"}};
         
         Game instance = new Game(4);
         instance.board = b;
@@ -112,7 +112,7 @@ public class GameTest {
     @Test
     public void testCheckGame5() {
         System.out.println("checkGame");
-        int[][] b = {{1,0,0,2},{2,0,1,1},{0,2,0,1},{2,1,0,2}};
+        String[][] b = {{"X","","","O"},{"O","","X",""},{"","O","","X"},{"O","X","","O"}};
         
         Game instance = new Game(4);
         instance.board = b;
@@ -129,8 +129,11 @@ public class GameTest {
     @Test
     public void testUpdateDisplay() {
         System.out.println("updateDisplay");
-        int[][] b = {{1,0,2},{2,2,0},{1,1,1}};
-        Game.updateDisplay(b);
+        String[][] b = {{"X","","O"},{"O","O",""},{"X","X","X"}};
+        
+        Game instance = new Game(3);
+        instance.updateDisplay(b);
+        
     }
     
 }

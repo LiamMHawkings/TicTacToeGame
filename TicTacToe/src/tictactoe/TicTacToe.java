@@ -6,8 +6,8 @@
 package tictactoe;
 
 /**
- * TicTacToe Game
- *
+ * TicTacToe Game 
+ * CLASS IS REDUNANDANT NOW, GUI.java IS NOW THE MAIN CLASS.
  * @author Liam
  */
 public class TicTacToe {
@@ -20,7 +20,7 @@ public class TicTacToe {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Game game = new Game(5); //Creating game object with array field specified.
+        Game game = new Game(3); //Creating game object with array field specified.
         User user = new User(game.size); //Creating user object as extension of Game class.
         Computer ai = new Computer(game.size, 1); //Creating computer object as extension of Game class.
 
